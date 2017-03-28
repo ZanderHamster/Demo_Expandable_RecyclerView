@@ -21,20 +21,41 @@
     <!--<com.appyvet.rangebar.RangeBar-->
     <!--android:layout_gravity="center"-->
     <!--android:id="@+id/rangeBar"-->
-    <!--android:layout_weight="1"-->
     <!--android:layout_width="match_parent"-->
     <!--android:layout_height="44dp" />-->
-    <com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar
+
+    <!--<com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar-->
+    <!--android:id="@+id/rangeSeekBar"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="center"-->
+    <!--android:layout_weight="1"-->
+    <!--app:bar_highlight_color="@color/colorMain"-->
+    <!--app:corner_radius="10"-->
+    <!--app:left_thumb_color="@color/colorMain"-->
+    <!--app:left_thumb_image="@drawable/ic_action_name"-->
+    <!--app:max_value="20"-->
+    <!--app:min_value="10" />-->
+
+
+    <!--<io.apptik.widget.MultiSlider-->
+    <!--android:id="@+id/range_slider1"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--style="@style/AppTheme"-->
+    <!--/>-->
+
+    <org.florescu.android.rangeseekbar.RangeSeekBar
         android:id="@+id/rangeSeekBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:layout_weight="1"
-        app:bar_highlight_color="@color/colorMain"
-        app:corner_radius="10"
-        app:left_thumb_color="@color/colorMain"
-        app:max_value="20"
-        app:min_value="10" />
+        app:absoluteMaxValue="150"
+        app:absoluteMinValue="20"
+        app:showLabels="false"
+        app:textAboveThumbsColor="@color/colorMain"
+        app:thumbShadow="true"
+        app:valuesAboveThumbs="false" />
 
     <TextView
         android:id="@+id/rightThumb"

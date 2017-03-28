@@ -1,10 +1,14 @@
 package com.example.user.demo_expandable_recyclerview;
 
+import android.graphics.Rect;
 import android.support.annotation.NonNull;
 import android.util.DisplayMetrics;
+import android.view.DragEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -13,10 +17,16 @@ import android.widget.TextView;
 import com.bignerdranch.expandablerecyclerview.ChildViewHolder;
 import com.appyvet.rangebar.RangeBar;
 import com.crystal.crystalrangeseekbar.interfaces.OnRangeSeekbarChangeListener;
+import com.crystal.crystalrangeseekbar.widgets.BubbleThumbRangeSeekbar;
 import com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar;
-//edmodo.rangebar.RangeBar;
+import com.crystal.crystalrangeseekbar.widgets.CrystalSeekbar;
+//import com.edmodo.rangebar.RangeBar;
+
+import org.florescu.android.rangeseekbar.RangeSeekBar;
 
 import java.util.List;
+
+import io.apptik.widget.MultiSlider;
 
 public class SubTitleViewHolder extends ChildViewHolder {
     private TextView textView;
@@ -26,6 +36,7 @@ public class SubTitleViewHolder extends ChildViewHolder {
     private TextView leftThumb;
     private TextView rightThumb;
     private CrystalRangeSeekbar rangeSeekbar;
+    private RangeSeekBar<Integer> seekBar;
 
     private RadioGroup radioGroup;
 
@@ -38,20 +49,39 @@ public class SubTitleViewHolder extends ChildViewHolder {
         leftThumb = (TextView) itemView.findViewById(R.id.leftThumb);
         rightThumb = (TextView) itemView.findViewById(R.id.rightThumb);
 
-
-        rangeSeekbar = (CrystalRangeSeekbar) itemView.findViewById(R.id.rangeSeekBar);
-
-        if (rangeSeekbar != null) {
-//            rangeSeekbar.setBarColor(R.color.colorMain);
-//            rangeSeekbar.setCornerRadius(12);
-            rangeSeekbar.setOnRangeSeekbarChangeListener(new OnRangeSeekbarChangeListener() {
+        
+        seekBar = (RangeSeekBar<Integer>) itemView.findViewById(R.id.rangeSeekBar);
+        if(seekBar!=null) {
+            seekBar.setOnRangeSeekBarChangeListener(new RangeSeekBar.OnRangeSeekBarChangeListener<Integer>() {
                 @Override
-                public void valueChanged(Number minValue, Number maxValue) {
-                    leftThumb.setText(minValue.toString());
-                    rightThumb.setText(maxValue.toString());
+                public void onRangeSeekBarValuesChanged(RangeSeekBar<Integer> bar, Integer minValue, Integer maxValue) {
+                    leftThumb.setText("" + minValue);
+                    rightThumb.setText("" + maxValue);
                 }
             });
         }
+//        seekBar.setOnDragListener(new View.OnDragListener() {
+//            @Override
+//            public boolean onDrag(View v, DragEvent event) {
+//                leftThumb.setText("" + seekBar.getSelectedMinValue());
+//                rightThumb.setText("" + seekBar.getSelectedMaxValue());
+//                return true;
+//            }
+//        });
+
+//        rangeSeekbar = (CrystalRangeSeekbar) itemView.findViewById(R.id.rangeSeekBar);
+//
+//        if (rangeSeekbar != null) {
+////            rangeSeekbar.setBarColor(R.color.colorMain);
+////            rangeSeekbar.setCornerRadius(12);
+//            rangeSeekbar.setOnRangeSeekbarChangeListener(new OnRangeSeekbarChangeListener() {
+//                @Override
+//                public void valueChanged(Number minValue, Number maxValue) {
+//                    leftThumb.setText(minValue.toString());
+//                    rightThumb.setText(maxValue.toString());
+//                }
+//            });
+//        }
 
 //        rangeBar = (RangeBar) itemView.findViewById(R.id.rangeBar);
 //        rangeBar.setPinRadius(0);
